@@ -17,15 +17,36 @@
   <link href="bower_components/core-icons/core-icons.html" rel="import">
   <link href="bower_components/core-icon-button/core-icon-button.html" rel="import">
   <link href="bower_components/core-toolbar/core-toolbar.html" rel="import">
+    <link href="bower_components/core-header-panel/core-header-panel.html" rel="import">
   <link href="bower_components/core-animated-pages/core-animated-pages.html" rel="import">
     <link href="bower_components/core-media-query/core-media-query.html" rel="import">
 <link href="bower_components/paper-shadow/paper-shadow.html" rel="import">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
 
   <style>
     body {
-      font-family: sans-serif;
+      font-family: 'Roboto', sans-serif;
         background-color: #eee;
     }
+
+      p {
+          margin: 5px 5px 5px 5px;
+          font-size: 1em;
+         font-weight: 300;
+          margin-left: 10%;
+          margin-right: 10%;
+      }
+
+      h4 {
+          margin-top: 1em;
+          font-size: 1.5em;
+          margin-left: 10%;
+          margin-right: 10%;
+      }
+
+      .bottomP {
+          margin-bottom: 25px;
+      }
 
     .toolbar {
       background-color: #3F51B5;
@@ -34,6 +55,17 @@
 
     #container {
       overflow: auto;
+    }
+
+    .textBox {
+        border-radius: 3px;
+        background-color: white;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+        bottom: 20px;
+        position: absolute;
+margin-left: auto;
+margin-right: 20px;
+        right: 0;
     }
 
     .card {
@@ -48,11 +80,11 @@
     }
 
     .view {
-      font-size: 250px;
       background-color: #eee;
         background-position: center;
         background-repeat:no-repeat;
         background-size: auto 100%;
+
     }
 
   </style>
@@ -78,7 +110,11 @@
 
       <template repeat="{{item in items}}">
         <section vertical layout>
-          <div class="view" flex vertical center center-justified layout hero-id="item-{{item}}" style="background-image: url(http://huntercaron.com/artExamStudy/slides/{{item}}.jpg);" hero?="{{$.pages.selected === item + 1 || $.pages.selected === 0}}"><span cross-fade>{{art[0].name}}</span></div>
+          <div class="view" flex vertical center center-justified layout hero-id="item-{{item}}" style="background-image: url(http://huntercaron.com/artExamStudy/slides/{{item}}.jpg);" hero?="{{$.pages.selected === item + 1 || $.pages.selected === 0}}"><span cross-fade class="textBox">
+              <h4>{{art[item].name}}</h4>
+              <p>{{art[item].artist}}</p>
+              <p class="bottomP">{{art[item].time}}</p>
+              </span></div>
         </section>
       </template>
 
@@ -103,7 +139,7 @@
 
       scope.items = items;
         scope.art = [
-            {name: 'Tycho', album: 'Fragments', color: '#f4db33' }
+            {name: 'The Houses of Parliament', artist: 'Claude Monet', time: '20th Century Europe'  }
         ];
 
       scope.selectView = function(e) {
