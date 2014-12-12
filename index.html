@@ -19,14 +19,17 @@
   <link href="bower_components/core-toolbar/core-toolbar.html" rel="import">
   <link href="bower_components/core-animated-pages/core-animated-pages.html" rel="import">
     <link href="bower_components/core-media-query/core-media-query.html" rel="import">
+<link href="bower_components/paper-shadow/paper-shadow.html" rel="import">
 
   <style>
     body {
       font-family: sans-serif;
+        background-color: #eee;
     }
 
     .toolbar {
-      background-color: steelblue;
+      background-color: #3F51B5;
+        color: white;
     }
 
     #container {
@@ -35,10 +38,10 @@
 
     .card {
       position: relative;
-      height: 150px;
-      width: 150px;
+      height:250px;
+      width: 250px;
       font-size: 50px;
-      margin: 8px;
+      margin: 10px;
       background-color: tomato;
       border-radius: 4px;
       cursor: default;
@@ -46,7 +49,10 @@
 
     .view {
       font-size: 250px;
-      background-color: tomato;
+      background-color: #eee;
+        background-position: center;
+        background-repeat:no-repeat;
+        background-size: auto 100%;
     }
 
   </style>
@@ -56,7 +62,7 @@
   <template is="auto-binding">
     <core-toolbar class="toolbar">
       <core-icon-button icon="{{$.pages.selected != 0 ? 'arrow-back' : 'menu'}}" on-tap="{{back}}"></core-icon-button>
-      <div flex>Stuff</div>
+      <div flex>Art in the City Study Slides</div>
       <core-icon-button icon="more-vert"></core-icon-button>
     </core-toolbar>
     <core-animated-pages id="pages" flex selected="0" on-core-animated-pages-transition-end="{{transitionend}}" transitions="cross-fade-all hero-transition">
@@ -65,15 +71,14 @@
 
         <div id="container" flex horizontal wrap around-justified layout hero-p>
           <template repeat="{{item in items}}">
-            <div class="card" vertical center center-justified layout hero-id="item-{{item}}" hero?="{{$.pages.selected === item + 1 || lastSelected === item + 1}}" on-tap="{{selectView}}"><span cross-fade>{{item}}</span></div>
+              <paper-shadow z=1 class="card" vertical center center-justified layout hero-id="item-{{item}}" style="background-image: url(http://localhost:8000/slides/{{item}}.jpg); background-size: 100%" hero?="{{$.pages.selected === item + 1 || lastSelected === item + 1}}" on-tap="{{selectView}}"><span cross-fade></span></paper-shadow>
           </template>
         </div>
-
       </section>
 
       <template repeat="{{item in items}}">
         <section vertical layout>
-          <div class="view" flex vertical center center-justified layout hero-id="item-{{item}}" hero?="{{$.pages.selected === item + 1 || $.pages.selected === 0}}"><span cross-fade>{{item}}</span></div>
+          <div class="view" flex vertical center center-justified layout hero-id="item-{{item}}" style="background-image: url(http://localhost:8000/slides/{{item}}.jpg);" hero?="{{$.pages.selected === item + 1 || $.pages.selected === 0}}"><span cross-fade>{{art[0].name}}</span></div>
         </section>
       </template>
 
@@ -91,12 +96,15 @@
 
     addEventListener('template-bound', function(e) {
       var scope = e.target;
-      var items = [], count=50;
+      var items = [], count=42;
       for (var i=0; i < count; i++) {
         items.push(i);
       }
 
       scope.items = items;
+        scope.art = [
+            {name: 'Tycho', album: 'Fragments', color: '#f4db33' }
+        ];
 
       scope.selectView = function(e) {
         var i = e.target.templateInstance.model.item;
