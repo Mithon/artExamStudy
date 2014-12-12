@@ -82,6 +82,12 @@
 
   <script>
 
+      document.querySelector('#mediaQuery').addEventListener('core-media-change',
+      function(e) {
+        document.body.classList.toggle('core-narrow', e.detail.matches);
+      });
+
+
     addEventListener('template-bound', function(e) {
       var scope = e.target;
       var items = [], count=50;
