@@ -71,14 +71,14 @@
 
         <div id="container" flex horizontal wrap around-justified layout hero-p>
           <template repeat="{{item in items}}">
-              <paper-shadow z=1 class="card" vertical center center-justified layout hero-id="item-{{item}}" style="background-image: url(http://localhost:8000/slides/{{item}}.jpg); background-size: 100%" hero?="{{$.pages.selected === item + 1 || lastSelected === item + 1}}" on-tap="{{selectView}}"><span cross-fade></span></paper-shadow>
+              <paper-shadow z=1 class="card" vertical center center-justified layout hero-id="item-{{item}}" style="background-image: url(http://huntercaron.com/artExamStudy/slides/{{item}}.jpg); background-size: 100%" hero?="{{$.pages.selected === item + 1 || lastSelected === item + 1}}" on-tap="{{selectView}}"><span cross-fade></span></paper-shadow>
           </template>
         </div>
       </section>
 
       <template repeat="{{item in items}}">
         <section vertical layout>
-          <div class="view" flex vertical center center-justified layout hero-id="item-{{item}}" style="background-image: url(http://localhost:8000/slides/{{item}}.jpg);" hero?="{{$.pages.selected === item + 1 || $.pages.selected === 0}}"><span cross-fade>{{art[0].name}}</span></div>
+          <div class="view" flex vertical center center-justified layout hero-id="item-{{item}}" style="background-image: url(http://huntercaron.com/artExamStudy/slides/{{item}}.jpg);" hero?="{{$.pages.selected === item + 1 || $.pages.selected === 0}}"><span cross-fade>{{art[0].name}}</span></div>
         </section>
       </template>
 
