@@ -148,7 +148,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                 <template repeat="{{item in items}}">
                     <section vertical layout>
-                        <div class="view" flex vertical center center-justified layout hero-id="item-{{item}}" style="background-image: url(http://huntercaron.com/artExamStudy/slidesSmall/{{art[item].index}}.jpg);" hero?="{{$.pages.selected === item + 1 || $.pages.selected === 0}}"><span cross-fade class="textBox">
+                        <div class="view" flex vertical center center-justified layout hero-id="item-{{item}}" style="background-image: url(http://huntercaron.com/artExamStudy/slidesSmall/{{art[item].index}}.jpg);" hero?="{{$.pages.selected === item + 1 || $.pages.selected === 0}}" on-tap="{{back}}"><span cross-fade class="textBox" >
                             <h4>{{art[item].name}}</h4>
                             <p>{{art[item].artist}}</p>
                             <p class="bottomP">{{art[item].time}}</p>
