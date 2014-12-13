@@ -106,7 +106,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                     <div id="container" flex horizontal wrap around-justified layout hero-p>
                         <template repeat="{{item in items}}">
-                            <paper-shadow z=1 class="card" vertical center center-justified layout hero-id="item-{{item}}" style="background-image: url(http://huntercaron.com/artExamStudy/slidesSmall/{{item}}.jpg); background-size: 100%" hero?="{{$.pages.selected === item + 1 || lastSelected === item + 1}}" on-tap="{{selectView}}"><span cross-fade></span></paper-shadow>
+                            <paper-shadow z=1 class="card" vertical center center-justified layout hero-id="item-{{item}}" style="background-image: url(http://huntercaron.com/artExamStudy/slidesSmall/{{art[item].index}}.jpg); background-size: 100%" hero?="{{$.pages.selected === item + 1 || lastSelected === item + 1}}" on-tap="{{selectView}}"><span cross-fade></span></paper-shadow>
                         </template>
                     </div>
                 </section>
@@ -210,7 +210,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 }
 
 
-                scope.items = shuffle(items);
+                scope.items = items;
 
 
 
